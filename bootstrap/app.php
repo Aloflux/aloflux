@@ -17,14 +17,14 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->render(function (ThrottleRequestsException $exception, Request $request) {
-            if (! $request->routeIs('contact.send')) {
+            if (! $request->routeIs('quote.send')) {
                 return null;
             }
 
             return redirect()
-                ->route('home')
-                ->with('error', 'Please wait a moment before sending another message.')
+                ->route('quote')
+                ->with('error', 'Please wait a moment before sending another request.')
                 ->withInput()
-                ->withFragment('contact');
+                ->withFragment('quote-form');
         });
     })->create();

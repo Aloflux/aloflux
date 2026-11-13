@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\QuoteController;
 use App\Support\ServiceCatalog;
 use Illuminate\Support\Facades\Route;
 
@@ -21,14 +21,20 @@ Route::get('/marketplace', function () {
 })->name('marketplace');
 
 Route::get('/services/{slug}', function (string $slug) {
+    if (isset(ServiceCatalog::REDIRECTS[$slug])) {
+        return redirect('/services/'.ServiceCatalog::REDIRECTS[$slug], 301);
+    }
+
     $service = ServiceCatalog::all()[$slug] ?? abort(404);
 
     return view('service', ['service' => $service]);
 })->name('service.show');
 
-Route::post('/contact', [ContactController::class, 'send'])
+Route::get('/quote', [QuoteController::class, 'show'])->name('quote');
+
+Route::post('/quote', [QuoteController::class, 'send'])
     ->middleware('throttle:5,1')
-    ->name('contact.send');
+    ->name('quote.send');
 
 Route::get('/sitemap.xml', function () {
     $urls = [
@@ -36,6 +42,7 @@ Route::get('/sitemap.xml', function () {
         ['loc' => url('/about'), 'changefreq' => 'monthly', 'priority' => '0.8'],
         ['loc' => url('/services'), 'changefreq' => 'weekly', 'priority' => '0.9'],
         ['loc' => url('/marketplace'), 'changefreq' => 'weekly', 'priority' => '0.8'],
+        ['loc' => url('/quote'), 'changefreq' => 'monthly', 'priority' => '0.8'],
     ];
 
     foreach (array_keys(ServiceCatalog::all()) as $slug) {

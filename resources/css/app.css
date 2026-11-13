@@ -11,7 +11,7 @@
     --color-navy-light: #0B3358;
     --color-teal: #6AC9CA;
     --color-teal-dark: #52B7B8;
-    --color-teal-ink: #1A7475; /* teal for text on white, 5.5:1 contrast */
+    --color-teal-ink: #145C5D; /* teal for text on light backgrounds, 7:1 or better */
     --color-green: #47BD98;
     --color-forest: #0F4037;
 
@@ -37,24 +37,6 @@
     background: var(--color-teal-dark);
 }
 
-/* Scrolling animation for service keywords */
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-.animate-scroll {
-    animation: scroll 30s linear infinite;
-}
-
-.animate-scroll:hover {
-    animation-play-state: paused;
-}
-
 /* Fade-in animation for alerts */
 @keyframes fade-in {
     from {
@@ -69,4 +51,15 @@
 
 .animate-fade-in {
     animation: fade-in 0.3s ease-out;
+}
+
+/* Shared form controls for the contact and quote forms */
+@layer components {
+    .form-label {
+        @apply block text-sm font-semibold text-gray-700 mb-2;
+    }
+
+    .form-field {
+        @apply w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 transition-colors focus:outline-none focus:border-teal-ink focus:ring-2 focus:ring-teal/40;
+    }
 }

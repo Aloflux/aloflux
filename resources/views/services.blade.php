@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('title', 'Our Services | Custom Software, Automation, AI and Digital Commerce | Aloflux')
-@section('meta_description', 'Aloflux services: custom software development, enterprise automation, AI powered SaaS solutions, digital commerce infrastructure, IT managed services, systems integration, and marketing for UK and European businesses.')
+@section('meta_description', 'Aloflux services: custom software development, enterprise automation, AI powered SaaS solutions, digital commerce infrastructure, IT managed services, systems integration, and digital marketing.')
 @section('og_title', 'Aloflux Services | Custom Software, Automation and AI Solutions')
-@section('og_description', 'From custom builds to fully managed services. Aloflux builds custom software, automation, AI solutions, and digital commerce infrastructure for UK and European businesses.')
+@section('og_description', 'From custom builds to fully managed services. See where Aloflux can help your business.')
 
 @section('structured_data')
 <script type="application/ld+json">
@@ -26,95 +26,35 @@
 
 @section('content')
     <!-- Page Header -->
-    <section class="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-navy">
-        <div class="max-w-7xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 text-teal text-base font-bold mb-4 tracking-wide uppercase">
-                <i class='bx bx-check-circle text-xl'></i>
+    <section class="py-14 md:py-16 px-4 sm:px-6 lg:px-8 bg-navy">
+        <div class="max-w-7xl mx-auto">
+            <div class="inline-flex items-center gap-2 text-teal text-sm font-bold mb-4 tracking-wide uppercase">
+                <i class='bx bx-check-circle text-lg'></i>
                 <span>Our Services</span>
             </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-5 max-w-3xl leading-tight">
                 What We Offer
             </h1>
-            <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+            <p class="text-lg text-gray-300 max-w-2xl">
                 From custom builds to fully managed services, we deliver technology that helps UK and European businesses run better.
             </p>
         </div>
     </section>
 
-    <!-- Major Services -->
-    <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+    <!-- Core Offerings -->
+    <section class="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div class="max-w-7xl mx-auto">
-            <div class="mb-12">
-                <div class="inline-flex items-center gap-2 text-teal-ink text-sm font-semibold mb-4">
-                    <i class='bx bx-star text-lg'></i>
-                    <span>Major Services</span>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Offerings</h2>
-                <p class="text-lg text-gray-600 max-w-2xl">
+            <div class="max-w-2xl mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Our Core Offerings</h2>
+                <p class="text-lg text-gray-600">
                     The services that define what Aloflux does best, delivered with engineering depth and clear communication.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Enterprise Automation -->
-                <div class="group relative bg-navy rounded-xl p-8 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 flex flex-col">
-                    <div class="w-16 h-16 bg-teal/20 rounded-xl flex items-center justify-center mb-6">
-                        <i class='bx bx-cog text-4xl text-teal'></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">Enterprise Automation</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed flex-1">
-                        Workflow automation, approval chains, document processing, and operational tooling for SMEs and growing organisations. We remove manual work, cut errors, and give you clear visibility of how your operations perform.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-3 py-1 bg-teal/20 text-teal text-xs font-semibold rounded-full">Automation</span>
-                        <span class="px-3 py-1 bg-white/10 text-gray-300 text-xs font-semibold rounded-full">Workflows</span>
-                        <span class="px-3 py-1 bg-white/10 text-gray-300 text-xs font-semibold rounded-full">Reporting</span>
-                    </div>
-                    <a href="/services/enterprise-automation" class="inline-flex items-center gap-2 px-6 py-3 bg-teal text-navy rounded-lg font-semibold hover:bg-teal-dark transition-colors text-sm">
-                        Learn More
-                        <i class='bx bx-right-arrow-alt text-lg'></i>
-                    </a>
-                </div>
-
-                <!-- Digital Commerce Infrastructure -->
-                <div class="group relative bg-navy rounded-xl p-8 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 flex flex-col">
-                    <div class="w-16 h-16 bg-teal/20 rounded-xl flex items-center justify-center mb-6">
-                        <i class='bx bx-store text-4xl text-teal'></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">Digital Commerce Infrastructure</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed flex-1">
-                        Ecommerce platforms, POS and inventory management, and payment gateway integrations with Pesapal, DusuPay, SeerBit, Tazapay, and Dodo Payments, including tooling for cross border transactions.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-3 py-1 bg-teal/20 text-teal text-xs font-semibold rounded-full">Ecommerce</span>
-                        <span class="px-3 py-1 bg-white/10 text-gray-300 text-xs font-semibold rounded-full">Payments</span>
-                        <span class="px-3 py-1 bg-white/10 text-gray-300 text-xs font-semibold rounded-full">POS</span>
-                    </div>
-                    <a href="/services/digital-commerce" class="inline-flex items-center gap-2 px-6 py-3 bg-teal text-navy rounded-lg font-semibold hover:bg-teal-dark transition-colors text-sm">
-                        Learn More
-                        <i class='bx bx-right-arrow-alt text-lg'></i>
-                    </a>
-                </div>
-
-                <!-- Software Development -->
-                <div class="group relative bg-teal rounded-xl p-8 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 flex flex-col">
-                    <div class="w-16 h-16 bg-white/45 rounded-xl flex items-center justify-center mb-6">
-                        <i class='bx bx-code-alt text-4xl text-navy'></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-navy mb-3">Software Development</h3>
-                    <p class="text-navy/80 mb-6 leading-relaxed flex-1">
-                        Custom software built around how your business works. From a first MVP to large enterprise systems, our engineers design, build, and deploy scalable web, mobile, and desktop applications that are easy to maintain and hand over.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-3 py-1 bg-white/45 text-navy text-xs font-semibold rounded-full">Custom Build</span>
-                        <span class="px-3 py-1 bg-white/45 text-navy text-xs font-semibold rounded-full">Web and Mobile</span>
-                        <span class="px-3 py-1 bg-white/45 text-navy text-xs font-semibold rounded-full">Enterprise</span>
-                    </div>
-                    <a href="/#contact" class="inline-flex items-center gap-2 px-6 py-3 bg-navy text-white rounded-lg font-semibold hover:bg-white hover:text-navy transition-colors text-sm">
-                        Get a Quote
-                        <i class='bx bx-right-arrow-alt text-lg'></i>
-                    </a>
-                </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                @foreach (\App\Support\ServiceCatalog::core() as $slug => $coreService)
+                    <x-core-service-card :slug="$slug" :service="$coreService" />
+                @endforeach
             </div>
         </div>
     </section>
@@ -127,13 +67,13 @@
                     <i class='bx bx-grid-alt text-lg'></i>
                     <span>Other Services</span>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">More Ways We Can Help</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Specialist Services</h2>
                 <p class="text-lg text-gray-600 max-w-2xl">
-                    Complementary technology and marketing services to support every stage of your business growth.
+                    Focused support that works alongside a core project or on its own.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- AI Solutions -->
                 <div class="group bg-white border border-gray-200 rounded-lg p-6 hover:border-teal hover:shadow-lg transition-all flex items-start gap-5">
                     <div class="w-14 h-14 bg-teal/15 rounded-lg flex items-center justify-center shrink-0">
@@ -182,65 +122,17 @@
                     </div>
                 </div>
 
-                <!-- Marketing -->
+                <!-- Digital Marketing -->
                 <div class="group bg-white border border-gray-200 rounded-lg p-6 hover:border-teal hover:shadow-lg transition-all flex items-start gap-5">
                     <div class="w-14 h-14 bg-teal/15 rounded-lg flex items-center justify-center shrink-0">
                         <i class='bx bx-line-chart text-3xl text-teal-ink'></i>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">Marketing</h3>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Digital Marketing</h3>
                         <p class="text-gray-600 mb-3 text-sm leading-relaxed">
-                            Strategic digital marketing to grow your brand. Data driven planning combined with creative storytelling, from brand strategy and market research to campaign execution.
+                            Content, social media, and search engine optimisation planned together, so every channel works towards the same leads and revenue goals.
                         </p>
-                        <a href="/services/marketing" class="text-teal-ink font-semibold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all">
-                            Learn more <i class='bx bx-right-arrow-alt text-lg'></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Content Marketing -->
-                <div class="group bg-white border border-gray-200 rounded-lg p-6 hover:border-teal hover:shadow-lg transition-all flex items-start gap-5">
-                    <div class="w-14 h-14 bg-teal/15 rounded-lg flex items-center justify-center shrink-0">
-                        <i class='bx bx-edit text-3xl text-teal-ink'></i>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">Content Marketing</h3>
-                        <p class="text-gray-600 mb-3 text-sm leading-relaxed">
-                            Compelling content strategies that engage your audience, build trust, and drive results. Blog posts, articles, video content, and infographics that build brand authority.
-                        </p>
-                        <a href="/services/content-marketing" class="text-teal-ink font-semibold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all">
-                            Learn more <i class='bx bx-right-arrow-alt text-lg'></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Social Media Marketing -->
-                <div class="group bg-white border border-gray-200 rounded-lg p-6 hover:border-teal hover:shadow-lg transition-all flex items-start gap-5">
-                    <div class="w-14 h-14 bg-teal/15 rounded-lg flex items-center justify-center shrink-0">
-                        <i class='bx bx-share-alt text-3xl text-teal-ink'></i>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">Social Media Marketing</h3>
-                        <p class="text-gray-600 mb-3 text-sm leading-relaxed">
-                            Build and grow your social media presence with targeted campaigns and community management. Content calendars, paid campaigns, and engagement across all major platforms.
-                        </p>
-                        <a href="/services/social-media-marketing" class="text-teal-ink font-semibold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all">
-                            Learn more <i class='bx bx-right-arrow-alt text-lg'></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Search Engine Optimisation -->
-                <div class="group bg-white border border-gray-200 rounded-lg p-6 hover:border-teal hover:shadow-lg transition-all flex items-start gap-5">
-                    <div class="w-14 h-14 bg-teal/15 rounded-lg flex items-center justify-center shrink-0">
-                        <i class='bx bx-search-alt text-3xl text-teal-ink'></i>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">Search Engine Optimisation</h3>
-                        <p class="text-gray-600 mb-3 text-sm leading-relaxed">
-                            Improve your search rankings and drive organic traffic with data driven SEO. Keyword research, technical audits, on page optimisation, and link building.
-                        </p>
-                        <a href="/services/search-engine-optimization" class="text-teal-ink font-semibold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all">
+                        <a href="/services/digital-marketing" class="text-teal-ink font-semibold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all">
                             Learn more <i class='bx bx-right-arrow-alt text-lg'></i>
                         </a>
                     </div>
@@ -265,17 +157,15 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-teal">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-navy mb-6">
-                Not Sure Which Service You Need?
-            </h2>
-            <p class="text-lg text-navy/80 mb-8">
-                Get in touch and we'll help you find the right solution for your business.
-            </p>
-            <a href="/#contact" class="inline-flex items-center gap-2 px-8 py-3.5 bg-navy text-white rounded-lg font-semibold hover:bg-white hover:text-navy transition-colors">
-                Get A Free Quote
+    <!-- CTA -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 bg-teal">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-navy mb-1">Not Sure Which Service You Need?</h2>
+                <p class="text-navy">Tell us the problem you are solving and we will point you to the right starting place.</p>
+            </div>
+            <a href="/quote" class="shrink-0 inline-flex items-center gap-2 px-8 py-3.5 bg-navy text-white rounded-lg font-semibold hover:bg-navy-light transition-colors">
+                Get a Quote
                 <i class='bx bx-right-arrow-alt text-xl'></i>
             </a>
         </div>

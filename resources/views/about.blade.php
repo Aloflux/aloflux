@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('title', 'About Aloflux | Custom Software, Automation and AI Solutions')
-@section('meta_description', 'Aloflux is a technology company building custom software, enterprise automation, and AI powered solutions for UK and European businesses. Learn about our mission, values, and approach.')
+@section('meta_description', 'About Aloflux: who we are, how we work, and why growing businesses choose us as their technology partner.')
 @section('og_title', 'About Aloflux')
-@section('og_description', 'We build custom software, enterprise automation, and AI powered solutions for UK and European businesses. High quality engineering at competitive rates.')
+@section('og_description', 'Meet Aloflux, the UK technology partner behind custom platforms, automation, and managed IT for growing businesses.')
 
 @section('structured_data')
 <script type="application/ld+json">
@@ -11,7 +11,7 @@
     "@@context": "https://schema.org",
     "@@type": "AboutPage",
     "name": "About Aloflux Ltd",
-    "description": "Aloflux is a technology company building custom software, enterprise automation, and AI powered solutions for UK and European businesses.",
+    "description": "Who Aloflux is, how the team works, and what clients can expect.",
     "url": "{{ url('/about') }}",
     "publisher": {
         "@@type": "Organization",
@@ -26,126 +26,128 @@
 
 @section('content')
     <!-- Page Header -->
-    <section class="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-navy">
-        <div class="max-w-7xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 text-teal text-base font-bold mb-4 tracking-wide uppercase">
-                <i class='bx bx-check-circle text-xl'></i>
-                <span>About Us</span>
+    <section class="py-14 md:py-16 px-4 sm:px-6 lg:px-8 bg-navy">
+        <div class="max-w-7xl mx-auto">
+            <div class="inline-flex items-center gap-2 text-teal text-sm font-bold mb-4 tracking-wide uppercase">
+                <i class='bx bx-check-circle text-lg'></i>
+                <span>About Aloflux</span>
             </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                Who We Are
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-5 max-w-3xl leading-tight">
+                Engineering Depth for Growing Organisations
             </h1>
-            <p class="text-lg text-gray-300 max-w-3xl mx-auto">
-                We are a UK private limited company dedicated to building custom software, enterprise automation, and AI powered solutions for businesses across the UK and Europe.
+            <p class="text-lg text-gray-300 max-w-2xl">
+                A technology partner for SMEs, startups, and NGOs that want software done properly: scoped honestly, built to last, and supported after launch.
             </p>
         </div>
     </section>
 
-    <!-- Mission & Vision -->
-    <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+    <!-- Story and Company Facts -->
+    <section class="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-5 gap-12 items-start">
+            <div class="lg:col-span-3">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
+                <div class="space-y-5 text-lg text-gray-600 leading-relaxed">
+                    <p>
+                        Aloflux exists to give smaller organisations the engineering depth usually reserved for large companies. We work with clients across the UK and Europe and take ownership of each system from the first workshop to long after launch.
+                    </p>
+                    <p>
+                        Alongside client projects, we build and run our own software products, so we know what it takes to keep a platform reliable once real users depend on it. That experience shapes every system we deliver.
+                    </p>
+                    <p>
+                        Our clients get more than code. They get a dependable technology partner that communicates clearly and stands behind its work.
+                    </p>
+                </div>
+            </div>
+
+            <aside class="lg:col-span-2 rounded-xl border border-gray-200 bg-gray-50 p-6 md:p-8">
+                <h3 class="text-sm font-bold uppercase tracking-widest text-teal-ink mb-5">At a Glance</h3>
+                @php
+                    $facts = [
+                        ['icon' => 'bx-buildings', 'label' => 'Company', 'value' => 'Aloflux Ltd, a UK private limited company'],
+                        ['icon' => 'bx-map', 'label' => 'Registered office', 'value' => '128 City Road, London EC1V 2NX'],
+                        ['icon' => 'bx-group', 'label' => 'Team', 'value' => 'London and Kampala'],
+                        ['icon' => 'bx-world', 'label' => 'Clients', 'value' => 'SMEs, startups, and NGOs across the UK and Europe'],
+                        // ['icon' => 'bx-file', 'label' => 'Contracts', 'value' => 'Governed by UK law'],
+                        ['icon' => 'bx-envelope', 'label' => 'Contact', 'value' => 'info@aloflux.com'],
+                    ];
+                @endphp
+                <dl class="divide-y divide-gray-200">
+                    @foreach ($facts as $fact)
+                        <div class="flex items-start gap-3 py-3 first:pt-0 last:pb-0">
+                            <i class='bx {{ $fact['icon'] }} text-xl text-teal-ink mt-0.5 shrink-0'></i>
+                            <div>
+                                <dt class="text-xs font-semibold uppercase tracking-wide text-gray-600">{{ $fact['label'] }}</dt>
+                                <dd class="text-gray-900 font-medium">{{ $fact['value'] }}</dd>
+                            </div>
+                        </div>
+                    @endforeach
+                </dl>
+            </aside>
+        </div>
+    </section>
+
+    <!-- Why Aloflux -->
+    <section class="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="space-y-4">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop" alt="Our team at work" class="rounded-lg aspect-[4/3] object-cover w-full">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop" alt="Team planning session" class="rounded-lg aspect-square object-cover w-full">
+            <div class="max-w-2xl mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Why Aloflux</h2>
+                <p class="text-lg text-gray-600">What you can expect when you work with us.</p>
+            </div>
+            @php
+                $reasons = [
+                    ['icon' => 'bx-flag', 'title' => 'UK Company, UK Contracts', 'text' => 'Registered in the UK, with contracts, invoicing, and legal jurisdiction under UK law.'],
+                    ['icon' => 'bx-code-alt', 'title' => 'Senior Engineering', 'text' => 'Experienced engineers who write maintainable, documented code that is easy to hand over.'],
+                    ['icon' => 'bx-pound', 'title' => 'Competitive Pricing', 'text' => 'Senior level engineering at rates well below typical UK and European agencies.'],
+                    ['icon' => 'bx-support', 'title' => 'Support After Launch', 'text' => 'We stay on after go live with maintenance, hosting, and ongoing development.'],
+                ];
+            @endphp
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                @foreach ($reasons as $reason)
+                    <div class="flex items-start gap-4 bg-white rounded-lg border border-gray-200 p-5">
+                        <div class="w-10 h-10 bg-teal/15 rounded-lg flex items-center justify-center shrink-0">
+                            <i class='bx {{ $reason['icon'] }} text-xl text-teal-ink'></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 mb-1">{{ $reason['title'] }}</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">{{ $reason['text'] }}</p>
+                        </div>
                     </div>
-                    <div class="space-y-4 pt-8">
-                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=400&fit=crop" alt="Office environment" class="rounded-lg aspect-square object-cover w-full">
-                        <img src="https://images.unsplash.com/photo-1553028826-f4804a6dba3b?w=400&h=300&fit=crop" alt="Innovation and technology" class="rounded-lg aspect-[4/3] object-cover w-full">
-                    </div>
-                </div>
-
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                        Our Mission
-                    </h2>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                        Aloflux Ltd is a UK private limited company focused on building custom software, enterprise automation, AI powered SaaS solutions, and digital commerce infrastructure for UK and European SMEs, startups, and NGOs.
-                    </p>
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        We are committed to delivering exceptional engineering quality at competitive rates, with a team that communicates clearly and takes full ownership of outcomes. Our clients get more than code. They get a dependable technology partner.
-                    </p>
-
-                    <ul class="space-y-3">
-                        <li class="flex items-start gap-3">
-                            <i class='bx bx-check-circle text-xl text-teal-ink mt-0.5 shrink-0'></i>
-                            <span class="text-gray-700">Custom web applications and enterprise systems built around your business needs</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class='bx bx-check-circle text-xl text-teal-ink mt-0.5 shrink-0'></i>
-                            <span class="text-gray-700">Subscription software platforms available directly through our marketplace</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class='bx bx-check-circle text-xl text-teal-ink mt-0.5 shrink-0'></i>
-                            <span class="text-gray-700">Enterprise automation, AI powered tools, and systems integration</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class='bx bx-check-circle text-xl text-teal-ink mt-0.5 shrink-0'></i>
-                            <span class="text-gray-700">Payment gateway integrations and digital commerce infrastructure</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class='bx bx-check-circle text-xl text-teal-ink mt-0.5 shrink-0'></i>
-                            <span class="text-gray-700">IT managed services for CONSENT, FoSCU, and other organisations</span>
-                        </li>
-                    </ul>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us -->
-    <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <!-- Who We Work With -->
+    <section class="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose Aloflux?</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    We combine deep technical expertise with a focus on quality, communication, and lasting partnership.
-                </p>
-            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-10">Who We Work With</h2>
+            @php
+                $clients = [
+                    ['title' => 'SMEs', 'text' => 'Businesses of 10 to 200 people that have outgrown spreadsheets and off the shelf tools and need systems built around how they work.'],
+                    ['title' => 'Startups', 'text' => 'Founders who need a reliable engineering partner to build and grow a product without hiring a full team on day one.'],
+                    ['title' => 'NGOs', 'text' => 'Development and community organisations that need dependable digital tools, hosting, and email on a sensible budget.'],
+                ];
+            @endphp
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg p-8 shadow-lg text-center">
-                    <div class="w-16 h-16 bg-teal/15 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class='bx bx-flag text-4xl text-teal-ink'></i>
+                @foreach ($clients as $client)
+                    <div class="border-t-2 border-teal pt-5">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">{{ $client['title'] }}</h3>
+                        <p class="text-gray-600 leading-relaxed">{{ $client['text'] }}</p>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">UK Private Company</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Aloflux Ltd is a private limited company registered in the United Kingdom at 128 City Road, London, United Kingdom, EC1V 2NX. Contracts, payments, and legal jurisdiction follow UK law, so you get a familiar structure for UK and international work.
-                    </p>
-                </div>
-                <div class="bg-white rounded-lg p-8 shadow-lg text-center">
-                    <div class="w-16 h-16 bg-teal/15 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class='bx bx-code-alt text-4xl text-teal-ink'></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Technical Excellence</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Our experienced engineers deliver high quality, scalable, and maintainable software across web, mobile, and enterprise systems, built to last and easy to hand over.
-                    </p>
-                </div>
-                <div class="bg-white rounded-lg p-8 shadow-lg text-center">
-                    <div class="w-16 h-16 bg-teal/15 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class='bx bx-dollar-circle text-4xl text-teal-ink'></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Competitive Pricing</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        We deliver senior level engineering at rates that are significantly more competitive than most Western or Eastern European alternatives, without compromising on output quality.
-                    </p>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-teal">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-navy mb-6">
-                Ready to Work With Us?
-            </h2>
-            <p class="text-lg text-navy/80 mb-8">
-                Let's discuss how our technology solutions can help transform your business.
-            </p>
-            <a href="/#contact" class="inline-flex items-center gap-2 px-8 py-3.5 bg-navy text-white rounded-lg font-semibold hover:bg-white hover:text-navy transition-colors">
-                Get In Touch
+    <!-- CTA -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 bg-teal">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-navy mb-1">Ready to Work With Us?</h2>
+                <p class="text-navy">Tell us what you are building and we will come back with a clear next step.</p>
+            </div>
+            <a href="/quote" class="shrink-0 inline-flex items-center gap-2 px-8 py-3.5 bg-navy text-white rounded-lg font-semibold hover:bg-navy-light transition-colors">
+                Get a Quote
                 <i class='bx bx-right-arrow-alt text-xl'></i>
             </a>
         </div>

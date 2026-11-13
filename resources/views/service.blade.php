@@ -59,8 +59,8 @@
                     <p class="text-lg text-gray-600 mb-8 leading-relaxed">
                         {{ $service['description_extended'] }}
                     </p>
-                    <a href="/#contact" class="inline-flex items-center gap-2 px-8 py-3.5 bg-teal text-navy rounded-lg font-semibold hover:bg-teal-dark transition-colors">
-                        Get Started
+                    <a href="/quote?type={{ urlencode($service['title']) }}" class="inline-flex items-center gap-2 px-8 py-3.5 bg-teal text-navy rounded-lg font-semibold hover:bg-teal-dark transition-colors">
+                        Request a Quote
                         <i class='bx bx-right-arrow-alt text-xl'></i>
                     </a>
                 </div>
@@ -100,11 +100,11 @@
             <h2 class="text-3xl md:text-4xl font-bold text-navy mb-6">
                 Ready to Get Started?
             </h2>
-            <p class="text-lg text-navy/80 mb-8">
+            <p class="text-lg text-navy mb-8">
                 Let's discuss how our {{ $service['title'] }} service can help transform your business.
             </p>
-            <a href="/#contact" class="inline-flex items-center gap-2 px-8 py-3.5 bg-navy text-white rounded-lg font-semibold hover:bg-white hover:text-navy transition-colors">
-                Contact Us Today
+            <a href="/quote?type={{ urlencode($service['title']) }}" class="inline-flex items-center gap-2 px-8 py-3.5 bg-navy text-white rounded-lg font-semibold hover:bg-white hover:text-navy transition-colors">
+                Request a Quote
                 <i class='bx bx-right-arrow-alt text-xl'></i>
             </a>
         </div>

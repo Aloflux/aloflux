@@ -9,52 +9,37 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ContactFormMail extends Mailable
+class QuoteRequestMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
-
     /**
-     * Create a new message instance.
+     * @param  array<string, mixed>  $data  validated quote form fields
      */
-    public function __construct(array $data)
-    {
-        $this->data = $data;
-    }
+    public function __construct(public array $data) {}
 
-    /**
-     * Get the message envelope.
-     */
     public function envelope(): Envelope
     {
-        $projectType = $this->data['project_type'] ?? 'General Inquiry';
         return new Envelope(
-            from: new Address(
-                config('mail.from.address'),
-                config('mail.from.name')
-            ),
-            subject: 'New Project Inquiry: ' . $projectType . ' - Aloflux',
+            from: new Address(config('mail.from.address'), config('mail.from.name')),
+            subject: 'New Quote Request: '.$this->data['project_type'].' | Aloflux',
             replyTo: [$this->data['email']],
         );
     }
 
-    /**
-     * Get the message content definition.
-     */
     public function content(): Content
     {
         return new Content(
-            view: 'emails.contact',
+            view: 'emails.quote',
             with: [
                 'name' => $this->data['name'],
                 'email' => $this->data['email'],
                 'company' => $this->data['company'] ?? null,
                 'projectType' => $this->data['project_type'],
                 'proposedBudget' => $this->data['proposed_budget'],
+                'timeline' => $this->data['timeline'] ?? null,
                 'projectDescription' => $this->data['project_description'],
             ],
         );
     }
 }
-

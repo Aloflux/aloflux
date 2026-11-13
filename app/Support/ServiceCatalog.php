@@ -5,6 +5,39 @@ namespace App\Support;
 class ServiceCatalog
 {
     /**
+     * Old service slugs that now live under a merged page.
+     *
+     * @var array<string, string>
+     */
+    public const REDIRECTS = [
+        'marketing' => 'digital-marketing',
+        'content-marketing' => 'digital-marketing',
+        'social-media-marketing' => 'digital-marketing',
+        'search-engine-optimization' => 'digital-marketing',
+    ];
+
+    /**
+     * The three services featured as core offerings, in display order.
+     *
+     * @var list<string>
+     */
+    public const CORE = [
+        'custom-software-development',
+        'enterprise-automation',
+        'digital-commerce',
+    ];
+
+    /**
+     * Core services with their slug included, ready for display.
+     *
+     * @return array<string, array<string, mixed>>
+     */
+    public static function core(): array
+    {
+        return array_intersect_key(self::all(), array_flip(self::CORE));
+    }
+
+    /**
      * Service detail pages keyed by URL slug.
      *
      * @return array<string, array<string, mixed>>
@@ -12,6 +45,23 @@ class ServiceCatalog
     public static function all(): array
     {
         return [
+            'custom-software-development' => [
+                'title' => 'Custom Software Development',
+                'subtitle' => 'Web applications, APIs, and internal tools built around how your business works.',
+                'summary' => 'Web platforms, APIs, and internal tools designed around your processes, from a first MVP to systems your whole organisation runs on.',
+                'highlights' => ['Web applications and client portals', 'APIs and third party integrations', 'Internal tools and dashboards'],
+                'icon' => 'bx-code-alt',
+                'heading' => 'Software Shaped Around Your Business',
+                'description' => 'Off the shelf tools force you to work their way. We build web applications, APIs, and internal tools that fit how your business actually operates, using Laravel and modern web technology that any competent team can maintain.',
+                'description_extended' => 'Every build starts with a paid Discovery Sprint, so scope, architecture, and cost are clear before development begins. We then deliver against agreed milestones, with working software you can review at each stage and full documentation at handover.',
+                'image' => 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=450&fit=crop',
+                'meta_description' => 'Custom Software Development by Aloflux. Web applications, APIs, and internal tools for UK and European businesses.',
+                'features' => [
+                    ['icon' => 'bx-window-alt', 'title' => 'Web Applications', 'description' => 'Customer portals, booking systems, and line of business applications that run in any browser.'],
+                    ['icon' => 'bx-git-merge', 'title' => 'APIs and Integrations', 'description' => 'Clean, documented APIs that connect your software to payment providers, CRMs, and partners.'],
+                    ['icon' => 'bx-file-find', 'title' => 'Clear Handover', 'description' => 'Documented code and architecture so your team, or any future supplier, can take it forward.'],
+                ],
+            ],
             'ai-solutions' => [
                 'title' => 'AI Solutions',
                 'subtitle' => 'Intelligent automation and AI powered tools that improve how your business operates.',
@@ -59,6 +109,8 @@ class ServiceCatalog
             ],
             'enterprise-automation' => [
                 'title' => 'Enterprise Automation',
+                'summary' => 'Workflow automation, approval chains, and document processing that remove manual work and cut errors across your operations.',
+                'highlights' => ['Approval and document workflows', 'System integrations and data sync', 'Live dashboards and alerts'],
                 'subtitle' => 'Streamline your operations with custom workflow automation.',
                 'icon' => 'bx-cog',
                 'heading' => 'Automate Your Enterprise Workflows',
@@ -72,68 +124,25 @@ class ServiceCatalog
                     ['icon' => 'bx-bell', 'title' => 'Smart Notifications', 'description' => 'Automated alerts and notifications that keep your team informed and tasks moving.'],
                 ],
             ],
-            'marketing' => [
-                'title' => 'Marketing',
-                'subtitle' => 'Strategic digital marketing to grow your brand.',
+            'digital-marketing' => [
+                'title' => 'Digital Marketing',
+                'subtitle' => 'Content, social media, and search working together to bring you qualified leads.',
                 'icon' => 'bx-line-chart',
-                'heading' => 'Grow Your Brand with Digital Marketing',
-                'description' => 'Our marketing services help businesses reach their target audience through strategic digital campaigns. We combine data driven planning with creative storytelling to maximise your brand\'s impact.',
-                'description_extended' => 'From brand strategy and market research to campaign execution and performance analysis, we provide complete marketing support tailored to UK and European audiences.',
+                'heading' => 'Get Found by the Right Customers',
+                'description' => 'Good software needs people to find it. Our digital marketing service combines content, social media, and search engine optimisation into one plan, so every channel supports the same goals instead of competing for budget.',
+                'description_extended' => 'We start with your audience and the searches they make, then build the content, campaigns, and technical SEO that put you in front of them. Reporting is tied to leads and revenue, not vanity metrics, and everything is tailored to UK and European audiences.',
                 'image' => 'https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=600&h=450&fit=crop',
-                'meta_description' => 'Digital Marketing by Aloflux. Strategic marketing for UK and European businesses.',
+                'meta_description' => 'Digital Marketing by Aloflux. Content, social media, and SEO for UK and European businesses.',
                 'features' => [
-                    ['icon' => 'bx-target-lock', 'title' => 'Targeted Campaigns', 'description' => 'Data driven campaigns that reach the right audience at the right time with the right message.'],
-                    ['icon' => 'bx-trending-up', 'title' => 'Growth Strategy', 'description' => 'Growth strategies that align your marketing effort with your business objectives.'],
-                    ['icon' => 'bx-bar-chart', 'title' => 'Analytics and Reporting', 'description' => 'Clear analytics and reporting to measure campaign performance and optimise return on investment.'],
-                ],
-            ],
-            'content-marketing' => [
-                'title' => 'Content Marketing',
-                'subtitle' => 'Compelling content that engages your audience and drives results.',
-                'icon' => 'bx-edit',
-                'heading' => 'Create Content That Converts',
-                'description' => 'Our content marketing service helps businesses create and distribute valuable, relevant content that attracts and retains a clearly defined audience. We craft stories that resonate with your target market.',
-                'description_extended' => 'From blog posts and articles to video content and infographics, we develop content strategies that build brand authority, drive organic traffic, and generate quality leads for your business.',
-                'image' => 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=450&fit=crop',
-                'meta_description' => 'Content Marketing by Aloflux. Content strategies that engage UK and European audiences.',
-                'features' => [
-                    ['icon' => 'bx-pen', 'title' => 'Content Strategy', 'description' => 'Content plans aligned with your brand voice, audience interests, and business goals.'],
-                    ['icon' => 'bx-video', 'title' => 'Content in Every Format', 'description' => 'Blog posts, videos, infographics, and more, in the formats your audience prefers.'],
-                    ['icon' => 'bx-calendar', 'title' => 'Content Calendar', 'description' => 'Organised publishing schedules that keep your output consistent and your audience engaged.'],
-                ],
-            ],
-            'social-media-marketing' => [
-                'title' => 'Social Media Marketing',
-                'subtitle' => 'Build and grow your social media presence with targeted strategies.',
-                'icon' => 'bx-share-alt',
-                'heading' => 'Grow Your Social Presence',
-                'description' => 'We help businesses build a strong social media presence through targeted campaigns, community management, and engaging content. Our strategies are designed to raise brand awareness and drive meaningful engagement.',
-                'description_extended' => 'We manage your presence across the major platforms, creating content calendars, running paid campaigns, and engaging with your community to build lasting relationships with your audience.',
-                'image' => 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=450&fit=crop',
-                'meta_description' => 'Social Media Marketing by Aloflux. Grow your social presence and engagement.',
-                'features' => [
-                    ['icon' => 'bx-group', 'title' => 'Community Management', 'description' => 'Active community management that builds trust and genuine relationships with your audience.'],
-                    ['icon' => 'bx-image', 'title' => 'Visual Content', 'description' => 'Striking graphics, videos, and stories designed to stop the scroll and drive engagement.'],
-                    ['icon' => 'bx-dollar', 'title' => 'Paid Advertising', 'description' => 'Targeted social media advertising that maximises reach and delivers measurable results.'],
-                ],
-            ],
-            'search-engine-optimization' => [
-                'title' => 'Search Engine Optimisation',
-                'subtitle' => 'Improve your search rankings and drive organic traffic.',
-                'icon' => 'bx-search-alt',
-                'heading' => 'Rank Higher, Get Found',
-                'description' => 'Our SEO services help businesses improve their search rankings and drive organic traffic to their websites. We use data driven strategies and proven practices to raise your online visibility.',
-                'description_extended' => 'From technical SEO audits and keyword research to on page optimisation and link building, we deliver SEO that produces sustainable results over the long term.',
-                'image' => 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&h=450&fit=crop',
-                'meta_description' => 'SEO by Aloflux. Improve your search rankings and drive organic traffic.',
-                'features' => [
-                    ['icon' => 'bx-search', 'title' => 'Keyword Research', 'description' => 'Thorough keyword research to identify the valuable searches your target audience is making.'],
-                    ['icon' => 'bx-code-block', 'title' => 'Technical SEO', 'description' => 'Technical audits and optimisations so your website is fast, crawlable, and search engine friendly.'],
-                    ['icon' => 'bx-link-alt', 'title' => 'Link Building', 'description' => 'Strategic link building that strengthens your domain authority and search rankings.'],
+                    ['icon' => 'bx-search-alt', 'title' => 'Search Engine Optimisation', 'description' => 'Keyword research, technical audits, and on page optimisation that improve rankings and bring in organic traffic.'],
+                    ['icon' => 'bx-edit', 'title' => 'Content Marketing', 'description' => 'Articles, case studies, and guides that build authority and give your sales team something worth sharing.'],
+                    ['icon' => 'bx-share-alt', 'title' => 'Social Media and Paid Campaigns', 'description' => 'Community management and targeted paid campaigns that reach decision makers where they spend time.'],
                 ],
             ],
             'digital-commerce' => [
                 'title' => 'Digital Commerce Infrastructure',
+                'summary' => 'Online storefronts, POS and inventory systems, and payment integrations, including tooling for cross border transactions.',
+                'highlights' => ['Ecommerce storefronts', 'POS and inventory management', 'Payment gateway integrations'],
                 'subtitle' => 'Ecommerce platforms, payment gateways, and cross border transaction tooling.',
                 'icon' => 'bx-store',
                 'heading' => 'Build Commerce Infrastructure That Scales',
