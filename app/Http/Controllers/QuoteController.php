@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ContactFormMail;
-use App\Support\ContactForm;
+use App\Mail\QuoteRequestMail;
 use App\Support\ContactSpamFilter;
+use App\Support\QuoteForm;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,9 +12,22 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\View\View;
 
-class ContactController extends Controller
+class QuoteController extends Controller
 {
+    public function show(Request $request): View
+    {
+        $type = $request->query('type');
+
+        return view('quote', [
+            'selectedType' => in_array($type, QuoteForm::projectTypes(), true) ? $type : null,
+        ]);
+    }
+
+    /**
+     * Bots and spam get the same success response as real people, so they learn nothing.
+     */
     public function send(Request $request, ContactSpamFilter $spamFilter): RedirectResponse
     {
         $botReason = $spamFilter->botReason($request);
@@ -29,15 +42,14 @@ class ContactController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
             'company' => ['nullable', 'string', 'max:255'],
-            'project_type' => ['required', 'string', Rule::in(ContactForm::PROJECT_TYPES)],
-            'proposed_budget' => ['required', 'string', Rule::in(ContactForm::BUDGETS)],
+            'project_type' => ['required', 'string', Rule::in(QuoteForm::projectTypes())],
+            'proposed_budget' => ['required', 'string', Rule::in(QuoteForm::BUDGETS)],
+            'timeline' => ['nullable', 'string', Rule::in(QuoteForm::TIMELINES)],
             'project_description' => ['required', 'string', 'max:5000'],
         ]);
 
         if ($validator->fails()) {
-            return back()
-                ->withErrors($validator)
-                ->withInput();
+            return $this->formPage()->withErrors($validator)->withInput();
         }
 
         $validated = $validator->validated();
@@ -56,10 +68,9 @@ class ContactController extends Controller
         try {
             $recipientEmail = env('MAIL_TO_ADDRESS', 'admin@aloflux.com');
 
-            Mail::to($recipientEmail)
-                ->send(new ContactFormMail($validated));
+            Mail::to($recipientEmail)->send(new QuoteRequestMail($validated));
 
-            Log::info('Contact form email sent successfully', [
+            Log::info('Quote request email sent', [
                 'to' => $recipientEmail,
                 'from' => $validated['email'],
                 'name' => $validated['name'],
@@ -68,31 +79,32 @@ class ContactController extends Controller
 
             return $this->accepted();
         } catch (Exception $e) {
-            Log::error('Contact form error: '.$e->getMessage(), [
-                'exception' => $e,
-                'trace' => $e->getTraceAsString(),
-            ]);
+            Log::error('Quote form error: '.$e->getMessage(), ['exception' => $e]);
 
-            return redirect()->route('home')
-                ->with('error', 'Sorry, there was an error sending your message. Please try again later.')
-                ->withInput()
-                ->withFragment('contact');
+            return $this->formPage()
+                ->with('error', 'Sorry, there was an error sending your request. Please try again later.')
+                ->withInput();
         }
+    }
+
+    private function formPage(): RedirectResponse
+    {
+        return redirect()->route('quote')->withFragment('quote-form');
     }
 
     private function accepted(): RedirectResponse
     {
-        return redirect()
-            ->route('home')
-            ->with('success', 'Thank you for your message! We will get back to you soon.')
-            ->withFragment('contact');
+        return $this->formPage()->with(
+            'success',
+            'Thank you. Your quote request is with us and we will reply with questions or a suggested next step.',
+        );
     }
 
     private function logBlocked(Request $request, string $reason, ?int $score = null): void
     {
         $description = $request->input('project_description');
 
-        Log::warning('Contact form submission blocked', [
+        Log::warning('Quote form submission blocked', [
             'reason' => $reason,
             'score' => $score,
             'ip' => $request->ip(),
