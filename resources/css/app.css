@@ -6,6 +6,15 @@
 @source '../**/*.js';
 
 @theme {
+    /* Aloflux brand palette, taken from the logo files in resources/brand */
+    --color-navy: #05213E;
+    --color-navy-light: #0B3358;
+    --color-teal: #6AC9CA;
+    --color-teal-dark: #52B7B8;
+    --color-teal-ink: #1A7475; /* teal for text on white, 5.5:1 contrast */
+    --color-green: #47BD98;
+    --color-forest: #0F4037;
+
     --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
@@ -20,12 +29,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #FF6D00;
+    background: var(--color-teal);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #E55A00;
+    background: var(--color-teal-dark);
 }
 
 /* Scrolling animation for service keywords */

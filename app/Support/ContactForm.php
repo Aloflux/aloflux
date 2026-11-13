@@ -17,11 +17,11 @@ class ContactForm
     ];
 
     public const BUDGETS = [
-        'Discovery Sprint ($1,500 to $3,000)',
-        '$3,000 to $8,000',
-        '$8,000 to $25,000',
-        '$25,000 to $50,000',
-        '$50,000 or above',
+        'Discovery Sprint (£1,200 to £2,500)',
+        '£2,500 to £6,000',
+        '£6,000 to £20,000',
+        '£20,000 to £40,000',
+        '£40,000 or above',
         'Monthly Retainer (ongoing)',
         'Not sure yet',
     ];

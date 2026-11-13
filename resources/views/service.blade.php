@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', $service['title'] . ' - Aloflux')
+@section('title', $service['title'] . ' | Aloflux')
 @section('meta_description', $service['meta_description'])
-@section('og_title', $service['title'] . ' - Aloflux')
+@section('og_title', $service['title'] . ' | Aloflux')
 @section('og_description', $service['subtitle'])
 
 @section('structured_data')
@@ -14,10 +14,10 @@
     "description": "{{ $service['description'] }}",
     "provider": {
         "@@type": "Organization",
-        "name": "Aloflux LLC",
+        "name": "Aloflux Ltd",
         "url": "{{ url('/') }}"
     },
-    "areaServed": ["US", "EU"],
+    "areaServed": ["GB", "EU"],
     "url": "{{ url()->current() }}"
 }
 </script>
@@ -27,9 +27,9 @@
 
 @section('content')
     <!-- Page Header -->
-    <section class="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-[#1A1A1A]">
+    <section class="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-navy">
         <div class="max-w-7xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 text-[#FF6D00] text-base font-bold mb-4 tracking-wide uppercase">
+            <div class="inline-flex items-center gap-2 text-teal text-base font-bold mb-4 tracking-wide uppercase">
                 <i class='bx bx-check-circle text-xl'></i>
                 <span>Our Services</span>
             </div>
@@ -47,8 +47,8 @@
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <div class="w-20 h-20 bg-[#FF6D00]/10 rounded-lg flex items-center justify-center mb-8">
-                        <i class='bx {{ $service['icon'] }} text-5xl text-[#FF6D00]'></i>
+                    <div class="w-20 h-20 bg-teal/15 rounded-lg flex items-center justify-center mb-8">
+                        <i class='bx {{ $service['icon'] }} text-5xl text-teal-ink'></i>
                     </div>
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                         {{ $service['heading'] }}
@@ -59,7 +59,7 @@
                     <p class="text-lg text-gray-600 mb-8 leading-relaxed">
                         {{ $service['description_extended'] }}
                     </p>
-                    <a href="/#contact" class="inline-flex items-center gap-2 px-8 py-3.5 bg-[#FF6D00] text-white rounded-lg font-semibold hover:bg-[#E55A00] transition-colors">
+                    <a href="/#contact" class="inline-flex items-center gap-2 px-8 py-3.5 bg-teal text-navy rounded-lg font-semibold hover:bg-teal-dark transition-colors">
                         Get Started
                         <i class='bx bx-right-arrow-alt text-xl'></i>
                     </a>
@@ -83,8 +83,8 @@
             <div class="grid md:grid-cols-3 gap-8">
                 @foreach ($service['features'] as $feature)
                     <div class="bg-white rounded-lg p-8 shadow-lg">
-                        <div class="w-14 h-14 bg-[#FF6D00]/10 rounded-lg flex items-center justify-center mb-6">
-                            <i class='bx {{ $feature['icon'] }} text-3xl text-[#FF6D00]'></i>
+                        <div class="w-14 h-14 bg-teal/15 rounded-lg flex items-center justify-center mb-6">
+                            <i class='bx {{ $feature['icon'] }} text-3xl text-teal-ink'></i>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-3">{{ $feature['title'] }}</h3>
                         <p class="text-gray-600 leading-relaxed">{{ $feature['description'] }}</p>
@@ -95,15 +95,15 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#FF6D00]">
+    <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-teal">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-navy mb-6">
                 Ready to Get Started?
             </h2>
-            <p class="text-lg text-white/90 mb-8">
+            <p class="text-lg text-navy/80 mb-8">
                 Let's discuss how our {{ $service['title'] }} service can help transform your business.
             </p>
-            <a href="/#contact" class="inline-flex items-center gap-2 px-8 py-3.5 bg-[#1A1A1A] text-white rounded-lg font-semibold hover:bg-white hover:text-[#1A1A1A] transition-colors">
+            <a href="/#contact" class="inline-flex items-center gap-2 px-8 py-3.5 bg-navy text-white rounded-lg font-semibold hover:bg-white hover:text-navy transition-colors">
                 Contact Us Today
                 <i class='bx bx-right-arrow-alt text-xl'></i>
             </a>
